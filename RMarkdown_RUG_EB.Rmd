@@ -1,0 +1,120 @@
+---
+title: "Intro to R Markdown"
+author: "Emily Bellis"  
+date: "5/4/2020"  
+output:  
+  revealjs::revealjs_presentation: 
+    theme: simple        
+    transition: fade 
+    highlight: tango  
+    fig_caption: true       
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## What is Markdown?
+
+- Markdown is a plain text formatting syntax for authoring HTML, PDF, and MS Word documents. 
+
+- Provides a standard way of formatting text, like  
+
+  *italics*  
+  **bold**  
+  `code`  
+  - lists, and    
+    - [links](https://rmarkdown.rstudio.com)  
+    - Latex equations like  $E = mc^{2}$ and $\sum_{i=1}^{n}\beta_i$ 
+    - and bibliographies <!-- This is a comment. -->
+
+## What is Markdown?
+
+- BUT original version did not include syntax for tables, footnotes, math expressions, or citations
+
+- Enter [pandoc](https://pandoc.org), a 'swiss-army knife' for converting between markup formats 
+
+- *A markup language is a system for annotating a document in a way that is syntactically distinguishable from the text; markup language is not shown when the document is processed for display*
+
+## What is R Markdown?
+
+- "R markdown" document format was first introduced in 2012 as part of **knitr** package, enabling users to embed code chunks in Markdown documents.
+
+- The **rmarkdown** package, first created in 2014, provides an 'ecosystem' for authoring documents.
+
+<center>
+
+![rmarkdown, knitr, and pandoc](/Users/emilywork/Downloads/ISL_course-2/Images_for_slides/rmd_workflow.png){ width=100% }
+
+
+</center>
+
+## Slide with R Output
+```{r starwars, echo = TRUE, warning=F, message=F}
+library(dplyr)
+library(knitr)
+kable(starwars[1:5,c(1:3,5,8:10)])
+```
+
+## Slide with Plot
+
+```{r , echo = TRUE, warning=F, fig.height=3.5, fig.cap="Star Wars Character Biodiversity"}
+library(ggplot2)
+library(beyonce)
+tmp <- starwars %>% group_by(species)%>% summarise(total= n()) %>% filter(total > 1)
+ggplot(tmp, aes(x=species, y=total, fill=species)) + geom_bar(stat = "identity") + scale_fill_manual(values = beyonce_palette(75, n=9,type="discrete"))  
+
+```
+
+
+## What is R Markdown?
+R Markdown also supports other languages, such as Python, Julia, C++, and SQL thanks to the **knitr** package, which provides a large number of language engines. 
+
+Language engines are essentially functions registered in the object `knitr::knit_engine`.
+```{r knitr, echo=TRUE}
+names(knitr::knit_engines$get())
+```
+
+## Rendering a .Rmd file
+**R Studio:**    
+    * Click the *Knit* button to generate document that includes both content and output of any embedded R code chunks within the document  
+
+**R Console:**  
+
+`rmarkdown::render('/path/to/file/Intro.Rmd')`  
+
+**CLI:**  
+
+`Rscript -e "rmarkdown::render('./Intro.Rmd')"`  
+
+## Incorporating in your academic life    
+- Lab Notebooks  
+- CV  
+- Data analysis reports for collaborators  
+- Write manuscripts  
+- Slides  
+- Websites  
+- Online textbooks  
+- Shiny apps  
+- Integrate with GitHub  
+
+## Resources for R Markdown  
+- [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/) by Yihui Xie, J. J. Allaire, & Garrett Grolemund   
+- [Bookdown](https://bookdown.org/yihui/bookdown/) by Yihue Xie  
+- Some tutorials for 'revealjs'   [here](https://garrettgman.github.io/rmarkdown/revealjs_presentation_format.html) and [here](http://www.jenniferbradham.org/post/reveal_js_markdown/)  
+- General tutorials and gallery from [RStudio](http://rmarkdown.rstudio.com)  
+- [Cheatsheet](https://rmarkdown.rstudio.com/lesson-15.html), also from RStudio interface Help > Cheatsheets  
+
+## Some Additional Notes  
+-Sensitive to spacing
+-Line with one trailing space 
+-Line with two spaces  
+-Another line 
+
+- Commenting with SHIFT+COMMAND+C (on a mac)
+<!-- This is my favorite thing but note even if you just highlight a section it does the whole line --> 
+
+
+  
+
+
