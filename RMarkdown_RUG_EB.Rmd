@@ -44,7 +44,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 <center>
 
-![rmarkdown, knitr, and pandoc](/Users/emilywork/Downloads/ISL_course-2/Images_for_slides/rmd_workflow.png){ width=100% }
+![rmarkdown, knitr, and pandoc](rmd_workflow.png){ width=100% }
 
 
 </center>
