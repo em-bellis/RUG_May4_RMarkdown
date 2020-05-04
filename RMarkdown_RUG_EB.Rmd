@@ -11,7 +11,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(fig.width=12, fig.height=8, echo = FALSE) #global code chunk options
 ```
 
 ## What is Markdown?
@@ -24,9 +24,9 @@ knitr::opts_chunk$set(echo = FALSE)
   **bold**  
   `code`  
   - lists, and    
-    - [links](https://rmarkdown.rstudio.com)  
-    - Latex equations like  $E = mc^{2}$ and $\sum_{i=1}^{n}\beta_i$ 
-    - and bibliographies <!-- This is a comment. -->
+    -  [links](https://rmarkdown.rstudio.com)   
+    -  Latex equations like  $E = mc^{2}$ and $\sum_{i=1}^{n}\beta_i$  
+    -  and bibliographies <!-- This is a comment. -->
 
 ## What is Markdown?
 
@@ -114,7 +114,9 @@ names(knitr::knit_engines$get())
 - Commenting with SHIFT+COMMAND+C (on a mac)
 <!-- This is my favorite thing but note even if you just highlight a section it does the whole line --> 
 
-
+2. Ordered lists are kind of weird  
+3. Because the number you type doesn't matter  
+&nbsp;8. But you can try using a non-breaking space.  
   
 
 
